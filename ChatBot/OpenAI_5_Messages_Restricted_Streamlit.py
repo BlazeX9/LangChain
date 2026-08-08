@@ -1,4 +1,3 @@
-#Restricted LLM
 #pip install langchain_openai streamlit
 import streamlit
 from dotenv import load_dotenv
