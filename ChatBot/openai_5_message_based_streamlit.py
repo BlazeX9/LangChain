@@ -1,8 +1,8 @@
 #Restricted LLM
 #pip install langchain_openai streamlit
+import streamlit
 from dotenv import load_dotenv
 import os
-import streamlit
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 from langchain_core.output_parsers import StrOutputParser
