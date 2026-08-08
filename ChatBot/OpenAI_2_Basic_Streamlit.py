@@ -13,7 +13,7 @@ llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"),model="gpt-4.1-mini",temper
 st.title("AI Teacher")
 user_input = st.text_input("Ask your question:")
 
-if st.button("Submit"):
+if st.button("Submit") or user_input:
     if not user_input.strip():
         st.warning("Please ask a question")
     else:
