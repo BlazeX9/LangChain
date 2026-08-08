@@ -1,0 +1,30 @@
+# pip install streamlit langchain-google-genai
+import streamlit as st
+from dotenv import load_dotenv
+import os
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+load_dotenv()
+
+llm = ChatGoogleGenerativeAI(api_key=os.getenv("GOOGLE_API_KEY"),model="gemini-3.1-flash-lite",temperature=0.2)
+
+st.title("AI Teacher")
+user_input = st.text_input("Ask your question:")
+
+if st.button("Submit") or user_input:
+    if not user_input.strip():
+        st.warning("Please ask a question")
+    else:
+        prompt = PromptTemplate.from_template("""
+        You are an AI Teacher who can explain things in simple English.
+        User Question: {question}
+        """)
+
+        parser = StrOutputParser()
+        chain = prompt | llm | parser
+        response = chain.invoke({
+            "question": user_input
+        })
+
+        st.write("Agent:",response)
