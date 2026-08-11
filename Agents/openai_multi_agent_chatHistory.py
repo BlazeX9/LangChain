@@ -1,8 +1,8 @@
+import streamlit
 from dotenv import load_dotenv
 import os
 from langchain_openai import ChatOpenAI
 from agent_tools import *
-import streamlit
 
 load_dotenv()
 
